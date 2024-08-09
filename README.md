@@ -10,4 +10,4 @@ Annoyed how every paste service is just annoying to use, swarmed with ads or nee
 
 ## Deploy your own on railway
 
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/UhfmC_?referralCode=jUKiO_)
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/NVtpxG?referralCode=jUKiO_)
