@@ -13,9 +13,8 @@ router.get("/:key", async (req, res) => {
   const redis = await connectRedis();
 
   const { key } = req.params;
-  const value = redis ? await redis.get(key) : "";
-
-  res.json({ key, value });
+  const value = redis ? await redis.get(key) : null;
+  res.json({ key, value: value || "" });
 });
 
 router.post("/:key", async (req, res) => {
