@@ -6,7 +6,7 @@ export default function SaveIndicator() {
   const loading = useAppSelector((state) => state.paste.loading);
 
   return (
-    <Box position="fixed" bottom={4} right={4} p={2} rounded="md" zIndex={999}>
+    <Box position="fixed" bottom={4} left={4} p={2} rounded="md" zIndex={999}>
       {loading ? <Saving /> : <Saved />}
     </Box>
   );
