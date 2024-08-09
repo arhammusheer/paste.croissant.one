@@ -14,7 +14,7 @@ const get = async (id: string) => {
 };
 
 const set = async (id: string, content: string) => {
-  const response = await api.post(id, { content });
+  const response = await api.post(id, { value: content });
   const { key, value } = response.data;
   return { key, value };
 };
