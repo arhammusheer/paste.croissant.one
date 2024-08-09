@@ -19,7 +19,11 @@ router.post("/:key", async (req, res) => {
   const { value } = req.body;
 
   if (!value) {
-    return res.status(400).json({ error: "Value is required" });
+    // Unset redis
+    if (redis) {
+      await redis.del(key);
+    }
+    return res.json({ key, value: "" });
   }
 
   if (redis) {
