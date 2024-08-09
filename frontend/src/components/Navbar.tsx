@@ -1,11 +1,10 @@
 import { Stack, Text, useColorModeValue } from "@chakra-ui/react";
+import { useAppSelector } from "../redux/store";
 import Logo from "./Logo";
-import { useLocation } from "react-router-dom";
 
 export default function Navbar() {
-  const location = useLocation();
-	const pathName = location.pathname;
-  
+  const path = useAppSelector((state) => state.paste.key);
+
   return (
     <Stack
       direction="row"
@@ -16,7 +15,7 @@ export default function Navbar() {
     >
       <Logo />
       <Text fontSize="sm" color={useColorModeValue("gray.600", "gray.300")}>
-        {pathName}
+        {path}
       </Text>
     </Stack>
   );

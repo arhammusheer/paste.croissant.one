@@ -48,6 +48,10 @@ const pasteSlice = createSlice({
     builder.addCase(load.fulfilled, (state, action) => {
       state.key = action.payload.key;
       state.value = action.payload.value;
+      const currentLocation = window.location.pathname;
+      if (currentLocation !== action.payload.key) {
+        window.history.pushState(null, "", `/${action.payload.key}`);
+      }
     });
     builder.addCase(load.pending, (state) => {
       state.loading = true;
