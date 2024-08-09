@@ -17,7 +17,11 @@ async function main() {
   app.use(helmet());
   app.use(
     cors({
-      origin: ["http://localhost:5173", "https://paste.croissant.one"],
+      origin: [
+        "http://localhost:5173",
+        "https://paste.croissant.one",
+        ...config.allowedCors,
+      ],
     })
   );
 
@@ -38,4 +42,3 @@ main().catch((err) => {
   console.error(err);
   process.exit(1);
 });
-
