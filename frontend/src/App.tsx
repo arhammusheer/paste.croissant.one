@@ -5,7 +5,7 @@ import SaveIndicator from "./components/SaveIndicator";
 
 function App() {
   return (
-    <Stack direction="column" spacing={4}>
+    <Stack direction="column" spacing={4} h={"100vh"}>
       <Navbar />
       <Content />
       <SaveIndicator />

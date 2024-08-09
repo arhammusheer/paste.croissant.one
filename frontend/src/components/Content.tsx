@@ -1,4 +1,4 @@
-import { Textarea } from "@chakra-ui/react";
+import { Box, Textarea } from "@chakra-ui/react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { load, save } from "../redux/slices/paste.slice";
 import { useAppDispatch, useAppSelector } from "../redux/store";
@@ -34,14 +34,18 @@ export default function Content() {
   useEffect(() => {
     setVal(content);
   }, [content]);
-  
+
   return (
-    <Textarea
-      value={val}
-      ref={inputElement}
-      onChange={(e) => setVal(e.target.value)}
-      placeholder="Type something..."
-      autoFocus
-    />
+    <Box p={4} h={"full"}>
+      <Textarea
+        value={val}
+        ref={inputElement}
+        onChange={(e) => setVal(e.target.value)}
+        placeholder="Type something..."
+        h={"full"}
+        border={0}
+        autoFocus
+      />
+    </Box>
   );
 }
