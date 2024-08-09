@@ -3,6 +3,12 @@ import { connectRedis } from "./redis";
 
 const router = Router();
 
+router.get("/", async (req, res) => {
+  // Redirect to random key
+  const key = generateRandomKey();
+  res.redirect(`/${key}`);
+});
+
 router.get("/:key", async (req, res) => {
   const redis = await connectRedis();
 
@@ -37,5 +43,17 @@ router.post("/:key", async (req, res) => {
 
   res.json({ key, value });
 });
+
+const generateRandomKey = () => {
+	const length = 6;
+	const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+	let result = "";
+
+	for (let i = 0; i < length; i++) {
+		result += chars[Math.floor(Math.random() * chars.length)];
+	}
+
+	return result;
+};
 
 export default router;
