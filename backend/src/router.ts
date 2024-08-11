@@ -9,18 +9,17 @@ router.get("/", async (req, res) => {
   res.redirect(`/${key}`);
 });
 
-router.get("/:key", async (req, res) => {
+router.get("/*", async (req, res) => {
   const redis = await connectRedis();
-
-  const { key } = req.params;
+  const key = req.path.slice(1);
   const value = redis ? await redis.get(key) : null;
   res.json({ key, value: value || "" });
 });
 
-router.post("/:key", async (req, res) => {
+// Handle everything route
+router.post("/*", async (req, res) => {
   const redis = await connectRedis();
-
-  const { key } = req.params;
+  const key = req.path.slice(1);
   const { value } = req.body;
 
   if (!value) {
@@ -44,15 +43,15 @@ router.post("/:key", async (req, res) => {
 });
 
 const generateRandomKey = () => {
-	const length = 6;
-	const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
-	let result = "";
+  const length = 6;
+  const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+  let result = "";
 
-	for (let i = 0; i < length; i++) {
-		result += chars[Math.floor(Math.random() * chars.length)];
-	}
+  for (let i = 0; i < length; i++) {
+    result += chars[Math.floor(Math.random() * chars.length)];
+  }
 
-	return result;
+  return result;
 };
 
 export default router;
