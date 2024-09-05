@@ -35,6 +35,8 @@ router.post("/*", async (req, res) => {
     await redis.set(key, value, {
       EX: 60 * 60 * 24,
     });
+
+    console.info(`Set key: ${key} with value: ${value}`);
   } else {
     return res.status(500).json({ error: "Failed to connect to Redis" });
   }
